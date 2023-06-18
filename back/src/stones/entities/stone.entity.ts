@@ -5,6 +5,7 @@ export class StoneEntity {
   radioactivityClass: string;
   waterAbsorption: string;
   density: string;
+  mohsHardness: string;
   abrasion: string;
   otherNames: string;
   similarGranites: string;

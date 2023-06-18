@@ -11,11 +11,11 @@ export class ServiceService {
   }
 
   findAll() {
-    return this.prismaService.services.findMany();
+    return this.prismaService.services.findMany({include:{uploadedFile: true}});
   }
 
   findOne(id: number) {
-    return this.prismaService.services.findUnique({ where: { id } });
+    return this.prismaService.services.findUnique({ where: { id }, include:{uploadedFile: true}});
   }
 
   update(id: number, updateServiceDto: UpdateServiceDto) {

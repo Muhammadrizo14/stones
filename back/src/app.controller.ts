@@ -8,7 +8,7 @@ export class AppController {
     const nodemailer = require('nodemailer');
 
     var transporter = await nodemailer.createTransport({
-      service: 'gmail',
+      service: 'smtp.timeweb.ru',
       auth: {
         user: 'magatillo9494@gmail.com',
         pass: 'jdlehcuwqopdoorx'

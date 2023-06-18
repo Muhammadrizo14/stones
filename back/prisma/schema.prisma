@@ -17,6 +17,7 @@ model Stone {
   radioactivityClass String?
   waterAbsorption    String?
   density            String?
+  mohsHardness       String?
   abrasion           String?
   otherNames         String?
   similarGranites    String?

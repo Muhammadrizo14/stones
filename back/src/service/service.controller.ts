@@ -31,7 +31,6 @@ export class ServiceController {
   }
 
   @Get(':id')
-  @UseGuards(JwtAuthGuard)
   findOne(@Param('id') id: string) {
     return this.serviceService.findOne(+id);
   }
