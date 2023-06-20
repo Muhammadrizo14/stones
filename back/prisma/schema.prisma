@@ -18,6 +18,7 @@ model Stone {
   waterAbsorption    String?
   density            String?
   mohsHardness       String?
+  structure          Boolean?
   abrasion           String?
   otherNames         String?
   similarGranites    String?

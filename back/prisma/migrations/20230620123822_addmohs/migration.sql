@@ -2,16 +2,19 @@
 CREATE TABLE `Stone` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(191) NOT NULL,
-    `country` VARCHAR(191) NOT NULL,
-    `radioactivityClass` VARCHAR(191) NOT NULL,
-    `waterAbsorption` VARCHAR(191) NOT NULL,
-    `density` VARCHAR(191) NOT NULL,
-    `abrasion` VARCHAR(191) NOT NULL,
-    `otherNames` VARCHAR(191) NOT NULL,
-    `similarGranites` VARCHAR(191) NOT NULL,
-    `variants` JSON NOT NULL,
+    `country` VARCHAR(191) NULL,
+    `radioactivityClass` VARCHAR(191) NULL,
+    `waterAbsorption` VARCHAR(191) NULL,
+    `density` VARCHAR(191) NULL,
+    `mohsHardness` VARCHAR(191) NULL,
+    `structure` BOOLEAN NULL,
+    `abrasion` VARCHAR(191) NULL,
+    `otherNames` VARCHAR(191) NULL,
+    `similarGranites` VARCHAR(191) NULL,
+    `variants` JSON NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
+    `categoryTitle` VARCHAR(191) NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -40,6 +43,17 @@ CREATE TABLE `Services` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
+CREATE TABLE `Blog` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+    `blogUrl` VARCHAR(191) NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    UNIQUE INDEX `Blog_title_key`(`title`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
 CREATE TABLE `Circlestone` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `page` VARCHAR(191) NOT NULL,
@@ -63,6 +77,8 @@ CREATE TABLE `UploadedFile` (
     `deletedAt` DATETIME(3) NULL,
     `serviceTitle` VARCHAR(191) NULL,
     `circlestoneId` INTEGER NULL,
+    `stoneId` INTEGER NULL,
+    `blogId` INTEGER NULL,
 
     UNIQUE INDEX `UploadedFile_filename_key`(`filename`),
     PRIMARY KEY (`id`)
@@ -78,8 +94,26 @@ CREATE TABLE `User` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+-- CreateTable
+CREATE TABLE `Category` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+
+    UNIQUE INDEX `Category_title_key`(`title`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `Stone` ADD CONSTRAINT `Stone_categoryTitle_fkey` FOREIGN KEY (`categoryTitle`) REFERENCES `Category`(`title`) ON DELETE SET NULL ON UPDATE CASCADE;
+
 -- AddForeignKey
 ALTER TABLE `UploadedFile` ADD CONSTRAINT `UploadedFile_serviceTitle_fkey` FOREIGN KEY (`serviceTitle`) REFERENCES `Services`(`title`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `UploadedFile` ADD CONSTRAINT `UploadedFile_circlestoneId_fkey` FOREIGN KEY (`circlestoneId`) REFERENCES `Circlestone`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `UploadedFile` ADD CONSTRAINT `UploadedFile_stoneId_fkey` FOREIGN KEY (`stoneId`) REFERENCES `Stone`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `UploadedFile` ADD CONSTRAINT `UploadedFile_blogId_fkey` FOREIGN KEY (`blogId`) REFERENCES `Blog`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
