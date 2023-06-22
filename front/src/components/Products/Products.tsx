@@ -2,9 +2,11 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 import './products.scss'
+import {StoneT} from "../../@types";
+import {HOST_URL} from "../../assets/consts";
 
 type ProductsT = {
-  stones: any[],
+  stones: StoneT[],
 }
 
 const Products: React.FC<ProductsT> = ({stones}) => {
@@ -12,8 +14,8 @@ const Products: React.FC<ProductsT> = ({stones}) => {
     <div className='product-list'>
       {stones.map((stone, i) => (
         <div key={i} className="product">
-          <Link to='/product/12'>
-            <img src={`http://1627061-ci09322.twc1.net:3001/upload/fayl/${stone.uploadedFile[0].id}`} alt=""/>
+          <Link to={`/product/${stone.id}`}>
+            <img src={`${HOST_URL}upload/fayl/${stone.uploadedFile[0].id}`} alt=""/>
             <h3>{stone.title}</h3>
             <p>{stone.categoryTitle}</p>
           </Link>
