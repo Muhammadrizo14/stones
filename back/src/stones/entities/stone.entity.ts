@@ -10,6 +10,7 @@ export class StoneEntity {
   abrasion: string;
   otherNames: string;
   similarGranites: string;
+  mazayka: string;
   categoryTitle: string;
   createdAt: Date;
   updatedAt: Date;
