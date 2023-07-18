@@ -38,7 +38,18 @@ export class UploadService {
     });
   }
 
-  remove(id: number) {
+  async remove(id: number) {
+    let fs = require('fs');
+    const file = await this.prismaService.uploadedFile.findUnique({
+      where: { id },
+    });
+
+    const filePath = `${file.path}`
+        
+
+    fs.unlink(filePath, (err) => {
+      if (err) throw err;
+    }); 
     return this.prismaService.uploadedFile.delete({ where: { id } });
   }
 
