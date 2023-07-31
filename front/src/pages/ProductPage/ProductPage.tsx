@@ -77,7 +77,7 @@ const ProductPage = () => {
       question: productValue
     }
     
-    axios.post(`${HOST_URL}/sendmail`, data)
+    axios.post(`${HOST_URL}sendmail`, data)
       .then((res)=> {
         setPopup(false)
         alert('отправлено')

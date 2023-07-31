@@ -10,8 +10,6 @@ type ProjectsT = {
 }
 
 const Projects: React.FC<ProjectsT> = ({children, projects}) => {
-  console.log(projects);
-  
   return (
     <section className='projects'>
       <div className="container">

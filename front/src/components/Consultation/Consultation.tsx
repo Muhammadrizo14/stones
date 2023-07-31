@@ -18,13 +18,14 @@ const Consultation: React.FC<ConsultationT> = ({title, subtitle}) => {
 
   const sendForm = (e:any)=> {
     e.preventDefault()
-    axios.post(`${HOST_URL}/sendmail`, {
+    axios.post(`${HOST_URL}sendmail`, {
       name,
       phoneNumber,
       question
     })
     .then(res=> {
       console.log(res);
+      alert('Отправлено')
     })
     .catch(err=> {
       console.log(err);
