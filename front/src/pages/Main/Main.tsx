@@ -15,12 +15,14 @@ import Consultation from "../../components/Consultation/Consultation";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./main.scss";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import OurWorksVideos from "../../components/OurWorksVideos/OurWorksVideos";
+import DynamicPage from "../../assets/dynamicPage";
 
 const Main = () => {
   return (
     <div className="main">
+      <DynamicPage title='Продажа камня в санкт-Петербурге и лен области под ключ ' />
       <div className="main-bg">
         <Slider {...settings}>
           <div className="main-slide">
@@ -38,13 +40,17 @@ const Main = () => {
       <main>
         <div className="container">
           <h1 className="main-title">Современная эстетика, воплощена в камне...</h1>
-          <Link to="/services"><button className="btn">Подробнее</button></Link>
+          <Link to="/services">
+            <button className="btn">Подробнее</button>
+          </Link>
           <div className="main-arrow">
             <button>
-              <svg width="62" height="32" viewBox="0 0 62 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M59.4998 2L37.0133 27.7217C33.9443 30.7594 28.9224 30.7594 25.8535 27.7217L1.99982 2"
-                      stroke="white" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round"
-                      strokeLinejoin="round"/>
+              <svg width="62" height="32" viewBox="0 0 62 32" fill="none"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M59.4998 2L37.0133 27.7217C33.9443 30.7594 28.9224 30.7594 25.8535 27.7217L1.99982 2"
+                  stroke="white" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round"
+                  strokeLinejoin="round"/>
               </svg>
             </button>
           </div>

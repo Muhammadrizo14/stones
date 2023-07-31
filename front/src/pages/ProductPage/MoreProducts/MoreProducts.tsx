@@ -1,5 +1,5 @@
 import React from 'react';
-import Products from "../../../components/Products/Products";
+// import Products from "../../../components/Products/Products";
 import {ProductT} from "../../../@types";
 
 const MoreProducts: React.FC<{products: ProductT[]}> = ({products}) => {

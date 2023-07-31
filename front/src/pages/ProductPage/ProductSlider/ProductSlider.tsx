@@ -1,14 +1,9 @@
 import React, {useState} from 'react';
 import Slider from "react-slick";
-import slide1 from '../../../assets/img/productPage/slide1.png'
-import slide2 from '../../../assets/img/productPage/slide2.png'
-import slide3 from '../../../assets/img/productPage/slide3.png'
-import slide4 from '../../../assets/img/productPage/slide4.png'
 
 import './productSlider.scss'
 import {HOST_URL} from "../../../assets/consts";
 
-const productSlides = [slide1, slide2, slide3, slide4]
 
 const ProductSlider = ({images}: {images: {id: string}[]}) => {
   const [nav1, setNav1] = useState<Slider | undefined>();

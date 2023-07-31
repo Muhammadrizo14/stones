@@ -13,6 +13,7 @@ import './reviews.scss'
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
 import Empty from "../../components/Empty/Empty";
+import DynamicPage from "../../assets/dynamicPage";
 
 
 type ReviewT = {
@@ -41,6 +42,7 @@ const Reviews = () => {
   }, []);
   return (
     <div className='reviews'>
+      <DynamicPage title={'Отзывы'} />
       <img src={reviewTopLeft} alt="" className="reviews-top-left"/>
       <img src={reviewTopRight} alt="" className="reviews-top-right"/>
       <img src={reviewBottomLeft} alt="" className="reviews-bottom-left"/>

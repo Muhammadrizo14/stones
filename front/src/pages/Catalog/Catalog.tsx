@@ -16,6 +16,7 @@ import Header from "../../layouts/Header/Header";
 import Filter from "./Filter/Filter";
 
 import "./catalog.scss";
+import DynamicPage from "../../assets/dynamicPage";
 
 const sortBy = [
   {value: "date", label: "По дате добавление"},
@@ -119,6 +120,7 @@ const Catalog: React.FC = () => {
 
   return (
     <div className="catalog">
+      <DynamicPage title={'Каталог'}/>
       <Header/>
       <img src={catalogLeft} className="catalog-left" alt=""/>
       <img src={catalogRight} className="catalog-right" alt=""/>
