@@ -21,7 +21,8 @@ export type StoneT = {
   country: string,
   id: number,
   variants: { format: string, pricerub: string, priceusd: string, product: string }[],
-  createdAt: string
+  createdAt: string,
+  color: 'string'
 }
 
 export type ServiceT = {
