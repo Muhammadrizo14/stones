@@ -18,9 +18,9 @@ const Products: React.FC<ProductsT> = ({stones}) => {
             <img src={`${HOST_URL}upload/fayl/${stone.uploadedFile[0]?.id}`} alt=""/>
             <h3>{stone.title}</h3>
             <p>{stone.categoryTitle}</p>
-            <p>id: {stone.id}</p>
-            <p>color: {stone?.color}</p>
           </Link>
+          <p>id: {stone.id}</p>
+          <p>color: {stone?.color}</p>
         </div>
       ))}
     </div>
