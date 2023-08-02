@@ -1,10 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import Select from "react-select";
 import filterStone from "../../../assets/img/catalog/filterStone.png";
+import Accordion from "../../../components/Accordion/Accordion";
 import MultiRange from "../../../components/MultiRange/MultiRange";
 
 import "./filter.scss";
 
+const colorsArr: any[] = [
+  {name: 'brown', value: 'Коричневый', code: '#964b00'},
+  {name: 'white', value: 'Белый', code: '#fff'},
+  {name: 'black', value: 'Черный', code: '#000'},
+  {name: 'beige', value: 'Бежевый', code: '#F5F5DC'},
+  {name: 'grey', value: 'Серый', code: '#808080'},
+  {name: 'green', value: 'Зеленный', code: '#008000'},
+  {name: 'red', value: 'Красный', code: '#ff0000'},
+  {name: 'yellow', value: 'Желтый', code: '#FFD700'},
+  {name: 'blue', value: 'Голубой', code: '#5cace6'},
+]
 type FilterT = {
   isOpen: boolean,
   size: {value: string, label: string},
@@ -14,20 +26,36 @@ type FilterT = {
   price:  {min: number, max: number},
   setPrice: React.Dispatch<React.SetStateAction<{min: number, max: number}>>,
   reset: () => void,
-  changingCategories: (category: string) => void,
+  setCategories: React.Dispatch<React.SetStateAction<string[]>>,
   categories: string[]
+  colors: string[],
+  setColors: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-const Filter: React.FC<FilterT> = ({changingCategories, categories, isOpen, reset, country, setCountry, size, setSize, price,  setPrice}) => {
+const Filter: React.FC<FilterT> = ({categories, setCategories, isOpen, reset, country, setCountry, size, setSize, price,  setPrice, colors, setColors}) => {
+  const accordion = useState(0);
+  const changingCategories = (category: string) => {
+    if (categories.includes(category)) {
+      setCategories(oldCategories => oldCategories.filter(item => item !== category));
+    } else {
+      setCategories((oldCategories) => [...oldCategories, category]);
+    }
+  };
 
+  const changingColors = (color: string) => {
+    if (colors.includes(color)) {
+      setColors(oldColors => oldColors.filter(item => item !== color))
+    } else {
+      setColors(oldColors => [...oldColors, color])
+    }
+  }
 
   return (
     <div className={`filter-wrapper${isOpen ? " active" : ""}`}>
       <div className="filter">
         <img src={filterStone} alt=""/>
         <div className="filter-inner">
-          <div className="filter-item">
-            <h4>Категории</h4>
+          <Accordion title="Категория" state={accordion} index={1}>
             <input id="granite" onChange={() => changingCategories("Гранит")} type="checkbox" checked={categories.includes('Гранит')}/>
             <label htmlFor="granite">Гранит</label><br/>
             <input id="onyx" onChange={() => changingCategories("Оникс")} type="checkbox" checked={categories.includes('Оникс')}/>
@@ -38,7 +66,15 @@ const Filter: React.FC<FilterT> = ({changingCategories, categories, isOpen, rese
             <label htmlFor="travertine">Травертин</label><br/>
             <input id="mosaic" onChange={() => changingCategories("Мозаика")} type="checkbox" checked={categories.includes('Мозаика')}/>
             <label htmlFor="mosaic">Мозаика</label>
-          </div>
+          </Accordion>
+          <Accordion title="Цвета" state={accordion} index={2}>
+            {colorsArr.map((col, i) =>
+              <React.Fragment key={i}>
+                <input id={col.name} onChange={() => changingColors(col.code)} checked={colors.includes(col.code)} type="checkbox"/>
+                <label htmlFor={col.name}>{col.value}</label><br/>
+              </React.Fragment>
+            )}
+          </Accordion>
           <div className="filter-item">
             <h4>Формат</h4>
             <Select options={sizes} value={size} onChange={(selectedOption) => selectedOption ? setSize(selectedOption) : null}/>

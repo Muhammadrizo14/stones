@@ -34,16 +34,9 @@ const Catalog: React.FC = () => {
   const [price, setPrice] = useState<{ min: number, max: number }>({min: 1000, max: 50000});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [categories, setCategories] = useState<string[]>(['Гранит']);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [colors, setColors] = useState<string[]>([])
 
-  const changingCategories = (category: string) => {
-    if (categories.includes(category)) {
-      const filtered = categories.filter(item => item !== category);
-      setCategories(filtered);
-    } else {
-      setCategories((oldCategories) => [...oldCategories, category]);
-    }
-  };
   useEffect(() => {
     const filterCloser = (e: MouseEvent) => {
       const target = e.target as HTMLDivElement;
@@ -85,6 +78,9 @@ const Catalog: React.FC = () => {
       return result;
     });
     filteredStone = filteredStone.filter((item: StoneT) => item.country.includes(country.value));
+    if (colors.length) {
+      filteredStone = filteredStone.filter((item: StoneT) => colors.includes(item.color));
+    }
     filteredStone = filteredStone.filter((item: StoneT) => {
       let result: boolean = false;
       item.variants.forEach(variant => {
@@ -109,7 +105,7 @@ const Catalog: React.FC = () => {
       filteredStone = filteredStone.filter((item: StoneT) => categories.includes(item.categoryTitle))
     }
     setStones([...filteredStone]);
-  }, [size, stoneServer, country, sort, price, categories]);
+  }, [size, stoneServer, country, sort, price, categories, colors]);
 
   const resetFilter = () => {
     setSize({value: "", label: "Все"});
@@ -132,7 +128,7 @@ const Catalog: React.FC = () => {
       <h1 className="title">КАТАЛОГ</h1>
       <div className="container">
         <div className="catalog-inner">
-          <Filter categories={categories} changingCategories={changingCategories} price={price} setPrice={setPrice} country={country} setCountry={setCountry} setSize={setSize} size={size} isOpen={filterStatus} reset={resetFilter}/>
+          <Filter colors={colors} setColors={setColors} categories={categories} setCategories={setCategories} price={price} setPrice={setPrice} country={country} setCountry={setCountry} setSize={setSize} size={size} isOpen={filterStatus} reset={resetFilter}/>
           <div className="catalog-content">
             <div className="catalog-top">
               <div>
