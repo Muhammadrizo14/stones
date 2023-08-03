@@ -19,8 +19,6 @@ const Products: React.FC<ProductsT> = ({stones}) => {
             <h3>{stone.title}</h3>
             <p>{stone.categoryTitle}</p>
           </Link>
-          <p>id: {stone.id}</p>
-          <p>color: {stone?.color}</p>
         </div>
       ))}
     </div>

@@ -39,7 +39,7 @@ const Contacts = () => {
                     stroke="#454545" strokeWidth="1.21636" strokeMiterlimit="10"/>
                 </svg>
                 <p>Телефон</p>
-                <a href="tel:+79650014371">+7 (965) 001-43-71 (Вопрсоы по натуральному камню и его наличию)</a>
+                <a href="tel:+79650014371">+7 (965) 001-43-71 (Вопросы по натуральному камню и его наличию)</a>
               </div>
               <div className='info-item'>
                 <svg width="33" height="34" viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,9 +98,7 @@ const Contacts = () => {
               </div>
             </div>
             <div className="info-map">
-              <iframe
-                src="https://yandex.ru/map-widget/v1/?um=constructor%3A374d1e8772c8f87c87b06c0c60da060a3fb112cf41139ae5b9c43938cd76cdb1&amp;source=constructor"
-                height="400"></iframe>
+            <iframe src="https://yandex.com/map-widget/v1/?um=constructor%3A6ef9a95e153f410410aa20615453b243b128e9137a3da95d1eac4499c7321928&amp;source=constructor" width="500" height="400" frameBorder="0"></iframe>
             </div>
           </div>
         </div>

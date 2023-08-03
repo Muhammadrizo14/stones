@@ -49,7 +49,7 @@ const ServicesPage = () => {
       {!error && !loading ?
         service ?
           <div className="container">
-            <div className="title">{service.title == 'Мозаичитые полы' ? 'Мозаичные полы' : service.title && service.title == 'Натурльные камни' ? 'Натуральные камни' : service.title}</div>
+            <div className="title">{service.title == 'Мозаичитые полы' ? 'Мозаичные полы' : service.title && service.title == 'Натурльные камни' ? 'Натуральные камни' : service.title && service.title == 'Монолитные полы террацо' ? 'Монолитные полы терраццо' : service.title}</div>
             <div className="services-info">
               <div className='info-text'>
                 <h2>{service.serviceTitle}</h2>

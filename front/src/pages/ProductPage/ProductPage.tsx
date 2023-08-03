@@ -118,12 +118,12 @@ const ProductPage = () => {
                     <h1 className="title">{stone.variants[0].pricerub} ₽/ м2</h1>
                     {/*<p className="discount">1920 ₽/ м2</p>*/}
                   </div>
-                  <div className="colors">
+                  {/* <div className="colors">
                     <p>Цвет: </p>
                     <div className="color" style={{ backgroundColor: "#F0E4D8" }}></div>
                     <div className="color" style={{ backgroundColor: "#F5F5F5" }}></div>
                     <div className="color" style={{ backgroundColor: "#DAA676" }}></div>
-                  </div>
+                  </div> */}
                   <div className="buy">
                     <div className="increment">
                       <button onClick={() => quantity > 1 ? setQuantity(old => old - 1) : null}>-</button>
@@ -187,7 +187,7 @@ const ProductPage = () => {
                       setProductValue(`${stone.title}, штук ${quantity}`)
                     }}>Купить в один клик</button>
                     <Link to="/contacts"><button className="btn grey-outline">Связаться с нами</button></Link>
-                    <div className='bottom-btns'>
+                    {/* <div className='bottom-btns'>
                       <button>
                         <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
@@ -204,7 +204,7 @@ const ProductPage = () => {
                             strokeLinejoin="round" />
                         </svg>
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="product-desc" style={{ flexDirection: 'column' }}>
                     <h1>Описание</h1>
