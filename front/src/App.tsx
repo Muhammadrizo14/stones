@@ -15,6 +15,7 @@ import Partners from './components/Partners/Partners';
 import OurWorks from './components/OurWorksImages/OurWorksImage';
 import WhatsApp from './assets/img/WhatsApp.webp'
 import Portfolio from './pages/Portfolio/Portfolio';
+import BlogPage from "./pages/BlogPage";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route element={<Services />} path='/services' />
         <Route element={<ServicesPage />} path='/services/:id' />
         <Route element={<Blog />} path='/blog' />
+        <Route element={<BlogPage />} path='/blog/:id' />
         <Route element={<Reviews />} path='/reviews' />
         <Route element={<Portfolio />} path='/portfolio' />
         <Route element={<Catalog />} path='/catalog' />

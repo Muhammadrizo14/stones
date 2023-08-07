@@ -57,7 +57,8 @@ const Blog = () => {
               <p className="date">{months[new Date(blog.createdAt).getMonth()]} {new Date(blog.createdAt).getDate()}, {new Date(blog.createdAt).getDate()} | <Link to="/blog">Блог</Link></p>
               <div className="more">
                 <div className="line"></div>
-                <a href={blog.link}>Подробнее</a>
+                {/*<a href={blog.link}>Подробнее</a>*/}
+                <Link to={`/blog/${blog.id}`}>Подробнее</Link>
               </div>
             </div>
           )}
