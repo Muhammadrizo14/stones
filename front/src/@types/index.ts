@@ -5,6 +5,14 @@ export type ProductT = {
   type: string,
 }
 
+export type PortfolioT = {
+  id: number,
+  title: string,
+  info: string,
+  link: string,
+  uploadedFile: {id: number}[]
+}
+
 export type BlogT = {
   title: string,
   uploadedFile: { id: string }[],

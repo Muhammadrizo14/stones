@@ -1,6 +1,10 @@
 .main .events {
   padding: 50px 0 150px;
 
+  .container {
+    max-width: 95%;
+  }
+
   h1 {
     padding-bottom: 50px;
   }
@@ -12,6 +16,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    height: 427px;
     @media screen and (max-width: 850px){
       flex-direction: column-reverse;
     }
@@ -21,6 +26,7 @@
 
     &-text {
       padding: 30px;
+      text-align: start;
 
       @media screen and (max-width: 550px){
         padding: 20px;

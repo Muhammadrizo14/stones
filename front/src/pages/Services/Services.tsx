@@ -11,7 +11,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import './Services.scss'
 import DynamicPage from "../../assets/dynamicPage";
+import { useNavigate } from 'react-router-dom';
 const Services = () => {
+  let navigate = useNavigate()
   const [services, setServices] = useState<ServiceT[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -48,9 +50,12 @@ const Services = () => {
         filteredServices.length ?
           <Projects projects={filteredServices}>
             <h1 className="title">Услуги</h1>
-            <div style={{ marginTop: 20 }}>
-              <button className={`btn ${filter === 'Изделия в интерьере' ? 'grey' : 'grey-outline'}`} style={{ marginRight: 20 }} onClick={() => filter === 'Изделия в интерьере' ? setFilter('') : setFilter("Изделия в интерьере")}>Изделия в интерьере</button>
-              <button className={`btn ${filter === 'Изделия в экстерьере' ? 'grey' : 'grey-outline'}`} onClick={() => filter === 'Изделия в экстерьере' ? setFilter('') : setFilter("Изделия в экстерьере")}>Изделия в экстерьере</button>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignContent: 'center', flexWrap: 'wrap'}}>
+              <div style={{ marginTop: 20 }}>
+                <button className={`btn ${filter === 'Изделия в интерьере' ? 'grey' : 'grey-outline'}`} style={{ marginRight: 20 }} onClick={() => filter === 'Изделия в интерьере' ? setFilter('') : setFilter("Изделия в интерьере")}>Изделия в интерьере</button>
+                <button className={`btn ${filter === 'Изделия в экстерьере' ? 'grey' : 'grey-outline'}`} onClick={() => filter === 'Изделия в экстерьере' ? setFilter('') : setFilter("Изделия в экстерьере")}>Изделия в экстерьере</button>
+              </div>
+              <button style={{ marginTop: 20 }} className='btn grey-outline' onClick={() => navigate('/portfolio')}>Портфолио</button>
             </div>
           </Projects> : <Empty />
         : null}

@@ -98,7 +98,7 @@ const Contacts = () => {
               </div>
             </div>
             <div className="info-map">
-            <iframe src="https://yandex.com/map-widget/v1/?um=constructor%3A6ef9a95e153f410410aa20615453b243b128e9137a3da95d1eac4499c7321928&amp;source=constructor" width="500" height="400" frameBorder="0"></iframe>
+              <iframe src="https://yandex.com/map-widget/v1/?um=constructor%3A50b6cc0bb34e455ec6a7168ecb8673b2c1e6aaace3d0d977bc840e6ecaaba705&amp;source=constructor" width="500" height="400" frameBorder="0"></iframe>
             </div>
           </div>
         </div>

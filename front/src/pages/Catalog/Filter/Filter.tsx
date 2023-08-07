@@ -75,7 +75,7 @@ const Filter: React.FC<FilterT> = ({categories, setCategories, isOpen, reset, co
               </React.Fragment>
             )}
           </Accordion>
-          <div className="filter-item">
+          <div className="filter-item" style={{zIndex: 999}}>
             <h4>Формат</h4>
             <Select options={sizes} value={size} onChange={(selectedOption) => selectedOption ? setSize(selectedOption) : null}/>
           </div>

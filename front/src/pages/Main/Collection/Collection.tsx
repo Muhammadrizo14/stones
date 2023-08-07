@@ -13,11 +13,11 @@ const Collection = () => {
   const collections = [
     {
       img: collection1,
-      name: 'Гранит'
+      name: 'Лабрадорит'
     },
     {
       img: collection2,
-      name: 'Гранит'
+      name: 'Aмазонит'
     },
     {
       img: collection3,
@@ -25,11 +25,11 @@ const Collection = () => {
     },
     {
       img: collection4,
-      name: 'Оранжевый оникс'
+      name: 'Оринтир'
     },
     {
       img: collection5,
-      name: 'Черный гранит'
+      name: 'Гранит'
     },
   ]
   const collectionSliderRef = useRef(null);
