@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import blogLeft from "../../assets/img/blog/blog-left.png";
 import blogRight from "../../assets/img/blog/blog-right.png";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Loading from "../../components/Loading/Loading";
 import Header from "../../layouts/Header/Header";
@@ -10,8 +10,8 @@ import Header from "../../layouts/Header/Header";
 import "./blog.scss";
 import Error from "../../components/Error/Error";
 import Empty from "../../components/Empty/Empty";
-import {BlogT} from "../../@types";
-import {HOST_URL} from "../../assets/consts";
+import { BlogT } from "../../@types";
+import { HOST_URL } from "../../assets/consts";
 import DynamicPage from "../../assets/dynamicPage";
 
 const months = [
@@ -41,29 +41,31 @@ const Blog = () => {
   return (
     <div className="blogs">
       <DynamicPage title={'Блог'} />
-      <img src={blogLeft} className="blog-left" alt=""/>
-      <img src={blogRight} className="blog-right" alt=""/>
-      <Header/>
+      <img src={blogLeft} className="blog-left" alt="" />
+      <img src={blogRight} className="blog-right" alt="" />
+      <Header />
       <div className="container">
         <h1 className="title">БЛОГ</h1>
-        {loading && <Loading/>}
-        {error && <Error/>}
+        {loading && <Loading />}
+        {error && <Error />}
         {!error && !loading ?
           blogs.length ? <div className="blogs-content">
-          {blogs.map((blog) =>
-            <div className="blog" key={blog.id}>
-              <img src={`${HOST_URL}upload/fayl/${blog.uploadedFile[0].id}`} alt=""/>
-              <h2>{blog.title}</h2>
-              <p className="date">{months[new Date(blog.createdAt).getMonth()]} {new Date(blog.createdAt).getDate()}, {new Date(blog.createdAt).getDate()} | <Link to="/blog">Блог</Link></p>
-              <div className="more">
-                <div className="line"></div>
-                {/*<a href={blog.link}>Подробнее</a>*/}
-                <Link to={`/blog/${blog.id}`}>Подробнее</Link>
+            {blogs.map((blog) =>
+              <div className="blog" key={blog.id}>
+                <Link to={`/blog/${blog.id}`}>
+                  <img src={`${HOST_URL}upload/fayl/${blog.uploadedFile[0].id}`} alt="" />
+                  <h2>{blog.title}</h2>
+                  <p className="date">{months[new Date(blog.createdAt).getMonth()]} {new Date(blog.createdAt).getDate()}, {new Date(blog.createdAt).getDate()} | <Link to="/blog">Блог</Link></p>
+                  <div className="more">
+                    <div className="line"></div>
+                    {/*<a href={blog.link}>Подробнее</a>*/}
+                    Подробнее
+                  </div>
+                </Link>
               </div>
-            </div>
-          )}
-        </div> : <Empty />
-        : null}
+            )}
+          </div> : <Empty />
+          : null}
       </div>
     </div>
   );
