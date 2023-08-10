@@ -1,6 +1,11 @@
 .main .events {
   padding: 50px 0 150px;
 
+  .events-slider {
+    display: flex;
+    align-items: center;
+  }
+
   .container {
     max-width: 95%;
   }
@@ -81,53 +86,10 @@
     }
   }
 
-  .slick-slider {
-    @media screen and (max-width: 1200px){
-      margin: 0 50px;
-    }
-    @media screen and (max-width: 550px){
-      margin: 0 30px;
-    }
-    .slick-list {
-      margin-left: -1px;
-    }
-    .slick-arrow {
-      transition: .3s;
-      svg {
-        width: 20px;
-      }
-      &.slick-prev {
-        left: -40px;
-      }
-      &.slick-next {
-        right: -40px;
-      }
-      &:before {
-        display: none;
-      }
-    }
-    .slick-dots {
-      bottom: -50px;
-      li {
-        margin: 0;
-
-        button {
-          opacity: 1;
-          border: 1px solid #444;
-          background: #444;
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-
-          &:before {
-            display: none;
-          }
-        }
-
-        &.slick-active button {
-          background: transparent;
-        }
-      }
-    }
+  .arrowprev {
+    cursor: pointer;
+  }
+  .arrownext {
+    cursor: pointer;
   }
 }

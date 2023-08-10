@@ -22,7 +22,9 @@ const HeaderNav = () => {
         <li className='nav-item'>
           <Link to="/blog">Новости</Link>
         </li>
-        
+        <li className='nav-item'>
+          <Link to="/portfolio">Портфолио</Link>
+        </li>
         <li className='nav-item'>
           <Link to="/contacts">Контакты</Link>
         </li>

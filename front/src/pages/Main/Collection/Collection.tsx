@@ -25,7 +25,7 @@ const Collection = () => {
     },
     {
       img: collection4,
-      name: 'Оринтир'
+      name: 'Оникс'
     },
     {
       img: collection5,

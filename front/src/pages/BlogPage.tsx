@@ -38,9 +38,11 @@ const BlogPage = () => {
         {!error && !loading ?
           blog ?
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20, padding: '20px 0'}} className='blog-inner'>
-              <h1 className="title">{blog.title}</h1>
-              <img src={`${HOST_URL}upload/fayl/${blog.uploadedFile[0]?.id}`} style={{width: '90%', margin: '0 auto'}} alt=""/>
-              <p className='text' style={{overflowWrap: 'break-word'}}>{blog.text}</p>
+              <h1 className="blog__title title">{blog.title}</h1>
+              <div className='blog__wrap'>
+                <img src={`${HOST_URL}upload/fayl/${blog.uploadedFile[0]?.id}`} alt=""/>
+                <p className='text' style={{overflowWrap: 'break-word'}}>{blog.text}</p>
+              </div>
             </div>
             : <Empty/>
           : null}
