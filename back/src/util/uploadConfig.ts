@@ -22,6 +22,7 @@ function uuidRandom(file) {
 
 export const multerOptions = {
   fileFilter: (req: any, file: any, callback: any) => {
+    console.log(file);
     if (file.mimetype.match(/\/(jpg|jpeg|png|gif)$/)) {
       callback(null, true);
     } else {
@@ -38,6 +39,27 @@ export const multerOptions = {
   storage: diskStorage({
     destination: async (req, file, callback) => {
       callback(null, await getDirPath('public/' + getDatePath(new Date())));
+    },
+    filename: (req, file, callback) => {
+      callback(
+        null,
+        new Date().toISOString().replace(/:/g, '-') + '-' + uuidRandom(file),
+      );
+    },
+  }),
+};
+
+
+export const multerOptionsText = {
+  fileFilter: (req: any, file: any, callback: any) => {
+    console.log(file.mimetype.match(/\/(txt|docx)$/));
+    
+    callback(null, true)
+  },
+
+  storage: diskStorage({
+    destination: async (req, file, callback) => {
+      callback(null, await getDirPath('seoText/' + getDatePath(new Date())));
     },
     filename: (req, file, callback) => {
       callback(

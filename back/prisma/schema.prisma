@@ -38,10 +38,22 @@ model Reviews {
 }
 
 model Services {
-  id           Int            @id @default(autoincrement())
-  title        String         @unique
-  serviceTitle String
-  info         String         @db.Text
+  id    Int    @id @default(autoincrement())
+  title String @unique
+
+  // FILE
+  fieldname    String?
+  originalname String?
+  encoding     String?
+  mimetype     String?
+  destination  String?
+  filename     String? @unique
+  path         String?
+  size         Int?
+
+  serviceTitle String?
+  info         String? @db.Text
+
   uploadedFile UploadedFile[]
 }
 
@@ -73,13 +85,13 @@ model UploadedFile {
 
   updatedAt     DateTime     @updatedAt()
   deletedAt     DateTime?
-  services      Services?    @relation(fields: [serviceTitle], references: [title], onDelete: Cascade)
-  serviceTitle  String?
+  services      Services?    @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  serviceId     Int?
   circlestone   Circlestone? @relation(fields: [circlestoneId], references: [id])
   circlestoneId Int?
   Stone         Stone?       @relation(fields: [stoneId], references: [id])
   stoneId       Int?
-  Blog          Blog?       @relation(fields: [blogId], references: [id])
+  Blog          Blog?        @relation(fields: [blogId], references: [id])
   blogId        Int?
 }
 
@@ -89,10 +101,8 @@ model User {
   password String
 }
 
-
 model Category {
-  id       Int    @id @default(autoincrement())
-  title String @unique
+  id    Int     @id @default(autoincrement())
+  title String  @unique
   stone Stone[]
-  
 }

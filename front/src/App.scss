@@ -6,6 +6,9 @@
   overflow: hidden;
 }
 
+.blogImage {
+  float: left;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -45,7 +48,6 @@
 }
 
 .blog__wrap {
-  display: flex;
   img {
     width: 670px;
     height: 453px;

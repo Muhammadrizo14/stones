@@ -25,6 +25,36 @@ export class ServiceService {
     });
   }
 
+  async findSeoText(id: number) {
+    let text = await this.prismaService.services.findUnique({ where: { id } });
+    const fs = require('fs/promises');
+
+    async function example() {
+      try {
+        const data = await fs.readFile(text.path, { encoding: 'utf8' });
+        return data
+      } catch (err) {
+        console.log(err);
+      }
+    }    
+
+    return example();
+
+
+
+
+  }
+
+  
+
+  updateSeoText(id: number, createServiceDto: any) {
+    console.log(createServiceDto);
+    return this.prismaService.services.update({
+      where: { id },
+      data: createServiceDto,
+    });
+  }
+
   remove(id: number) {
     return this.prismaService.services.delete({ where: { id } });
   }

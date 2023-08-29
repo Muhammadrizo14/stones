@@ -40,7 +40,7 @@ const BlogPage = () => {
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20, padding: '20px 0'}} className='blog-inner'>
               <h1 className="blog__title title">{blog.title}</h1>
               <div className='blog__wrap'>
-                <img src={`${HOST_URL}upload/fayl/${blog.uploadedFile[0]?.id}`} alt=""/>
+                <img className='blogImage' src={`${HOST_URL}upload/fayl/${blog.uploadedFile[0]?.id}`} alt=""/>
                 <p className='text' style={{overflowWrap: 'break-word'}}>{blog.text}</p>
               </div>
             </div>
