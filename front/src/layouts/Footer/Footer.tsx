@@ -24,6 +24,13 @@ const Footer = () => {
                 fill="white" />
             </svg>
           </a>
+          {/* Zoon widget start */}
+          <div data-id="64df91ee2612eec1be050032" data-locale="ru_RU" data-type="list" data-stars="all" data-style="white" style={{display:"flex", flexDirection: "column", gap: "8px"}}>
+            <a href="https://spb.zoon.ru/building/kompaniya_vkamne_v_fyodorovskom/">Компания Вкамне в Фёдоровском</a>
+            <a href="https://spb.zoon.ru/gorod-fyodorovskoe/building/type-oblitsovochnyj_kamen/">Продажа облицовочного камня</a>
+          </div>
+          <script src="https://zoon.ru/jsext/widget_comments.js?v=4.2"></script>
+          {/* Zoon widget end  */}
           <nav className="footer-nav">
             <div className="nav-item">
               <h3>КОМПАНИЯ</h3>
@@ -75,7 +82,7 @@ const Footer = () => {
 
                 <div className='modal_content'>
                   <Consultation />
-                  <svg onClick={()=> setPopup(false)} clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" /></svg>
+                  <svg onClick={() => setPopup(false)} clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" /></svg>
                 </div>
 
               </div>
