@@ -9,6 +9,7 @@ import {
   UseInterceptors,
   UploadedFile,
   Res,
+  UseGuards,
 } from '@nestjs/common';
 import { UploadService } from './upload.service';
 import { CreateUploadDto } from './dto/create-upload.dto';
@@ -18,6 +19,7 @@ import { multerOptions } from '../util/uploadConfig';
 import { UploadEntity } from './entities/upload.entity';
 import { Response } from 'express';
 import { Prisma } from '@prisma/client';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @Controller('upload')
 export class UploadController {
@@ -39,6 +41,7 @@ export class UploadController {
   }
 
   @Post()
+  @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('file', multerOptions))
   upload(@UploadedFile() file: Prisma.UploadedFileCreateInput) {
     return this.uploadService.create(file);
@@ -59,11 +62,13 @@ export class UploadController {
   }
 
   @Patch(':id')
+  @UseGuards(JwtAuthGuard)
   update(@Param('id') id: string, @Body() updateUploadDto: UpdateUploadDto) {
     return this.uploadService.update(+id, updateUploadDto);
   }
 
   @Delete(':id')
+  @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string) {
     return this.uploadService.remove(+id);
   }

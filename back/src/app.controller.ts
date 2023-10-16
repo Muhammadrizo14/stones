@@ -10,17 +10,17 @@ export class AppController {
     const nodemailer = require('nodemailer');
 
     var transporter = await nodemailer.createTransport({
-      host: 'smtp.timeweb.ru',
+      host: 'smtp.beget.com',
       port: 25,
       auth: {
         user: 'info@vkamne.com',
-        pass: 'UeYY7kld'
+        pass: '&5aCquW7'
       }
     });
 
     var mailOptions = {
       from: 'Vkamne',
-      to: 'iozxckali@gmail.com',
+      to: 'info@vkamne.com',
       subject: 'Vkamne',
       text: `
       имя: ${sendMailDto.name}, 
@@ -39,13 +39,20 @@ export class AppController {
   async find() {
     let services = this.prismaService.services.findMany()
     let blog = this.prismaService.blog.findMany()
+    
     let stone = this.prismaService.stone.findMany()
+    let slider = this.prismaService.slider.findMany()
+    
     let reviews = this.prismaService.reviews.findMany()
+    let portfolio = this.prismaService.profile.findMany()
+
     return {
       services: (await services).length, 
       blog: (await blog).length, 
       stone: (await stone).length, 
-      reviews: (await reviews).length
+      slider: (await slider).length, 
+      reviews: (await reviews).length,
+      portfolio: (await portfolio).length
     }
   } 
 }

@@ -11,7 +11,9 @@ export class StoneEntity {
   otherNames: string;
   similarGranites: string;
   mazayka: string;
+  color: string;
   categoryTitle: string;
   createdAt: Date;
+  seoText: string;
   updatedAt: Date;
 }

@@ -17,7 +17,7 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 export class ReviewsController {
   constructor(private readonly reviewsService: ReviewsService) { }
 
-  @Post()
+  @Post() 
   @UseGuards(JwtAuthGuard)
   create(@Body() createReviewDto: CreateReviewDto) {
     return this.reviewsService.create(createReviewDto);

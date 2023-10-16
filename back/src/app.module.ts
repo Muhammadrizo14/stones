@@ -10,6 +10,9 @@ import { CirclestoneModule } from './circlestone/circlestone.module';
 import { BlogModule } from './blog/blog.module';
 import { CategoryModule } from './category/category.module';
 import { AppController } from './app.controller';
+import { ProfileModule } from './profile/profile.module';
+import { SliderModule } from './slider/slider.module';
+import { YoutubeModule } from './youtube/youtube.module';
 
 @Module({
   imports: [
@@ -24,6 +27,9 @@ import { AppController } from './app.controller';
     CirclestoneModule,
     BlogModule,
     CategoryModule,
+    ProfileModule,
+    SliderModule,
+    YoutubeModule,
   ],
   controllers: [AppController],
   providers: [],

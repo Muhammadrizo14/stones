@@ -14,4 +14,6 @@ export class UploadEntity {
   circleStoneId: number;
   stoneId: number;
   blogId:number;
+  profileId: number;
+  sliderId: number;
 }

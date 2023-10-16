@@ -1,10 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
-
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
@@ -13,6 +10,7 @@ datasource db {
 model Stone {
   id                 Int            @id @default(autoincrement())
   title              String
+  color              String?
   country            String?
   radioactivityClass String?
   waterAbsorption    String?
@@ -23,12 +21,15 @@ model Stone {
   otherNames         String?
   similarGranites    String?
   variants           Json?
-  mazayka            String?
   createdAt          DateTime       @default(now())
-  updatedAt          DateTime       @updatedAt()
-  category           Category?      @relation(fields: [categoryTitle], references: [title])
+  updatedAt          DateTime       @updatedAt
   categoryTitle      String?
+  mazayka            String?
+  seoText            String?        @db.Text
+  category           Category?      @relation(fields: [categoryTitle], references: [title])
   uploadedFile       UploadedFile[]
+
+  @@index([categoryTitle], map: "Stone_categoryTitle_fkey")
 }
 
 model Reviews {
@@ -37,14 +38,36 @@ model Reviews {
   comment   String   @db.Text
   rate      Int
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt()
+  updatedAt DateTime @updatedAt
 }
 
 model Services {
+  id            Int            @id @default(autoincrement())
+  title         String         @unique
+  serviceTitle  String?
+  info          String?        @db.Text
+  destination   String?
+  encoding      String?
+  fieldname     String?
+  filename      String?        @unique
+  mimetype      String?
+  originalname  String?
+  path          String?
+  size          Int?
+  interorekster String?
+  uploadedFile  UploadedFile[]
+}
+
+model Profile {
   id           Int            @id @default(autoincrement())
-  title        String         @unique
-  serviceTitle String
+  title        String
   info         String         @db.Text
+  url          String
+  uploadedFile UploadedFile[]
+}
+
+model Slider {
+  id           Int            @id @default(autoincrement())
   uploadedFile UploadedFile[]
 }
 
@@ -53,6 +76,7 @@ model Blog {
   title        String         @unique
   blogUrl      String?
   createdAt    DateTime       @default(now())
+  text         String?        @db.Text
   uploadedFile UploadedFile[]
 }
 
@@ -63,27 +87,37 @@ model Circlestone {
 }
 
 model UploadedFile {
-  id           Int      @id @default(autoincrement())
-  fieldname    String
-  originalname String
-  encoding     String
-  mimetype     String
-  destination  String
-  filename     String   @unique
-  path         String
-  size         Int
-  createdAt    DateTime @default(now())
-
-  updatedAt     DateTime     @updatedAt()
+  id            Int          @id @default(autoincrement())
+  fieldname     String
+  originalname  String
+  encoding      String
+  mimetype      String
+  destination   String
+  filename      String       @unique
+  path          String
+  size          Int
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
   deletedAt     DateTime?
-  services      Services?    @relation(fields: [serviceTitle], references: [title], onDelete: Cascade)
   serviceTitle  String?
-  circlestone   Circlestone? @relation(fields: [circlestoneId], references: [id])
   circlestoneId Int?
-  Stone         Stone?       @relation(fields: [stoneId], references: [id])
   stoneId       Int?
-  Blog          Blog?       @relation(fields: [blogId], references: [id])
   blogId        Int?
+  profileId     Int?
+  sliderId      Int?
+  Blog          Blog?        @relation(fields: [blogId], references: [id])
+  circlestone   Circlestone? @relation(fields: [circlestoneId], references: [id])
+  Profile       Profile?     @relation(fields: [profileId], references: [id])
+  services      Services?    @relation(fields: [serviceTitle], references: [title], onDelete: Cascade)
+  Slider        Slider?      @relation(fields: [sliderId], references: [id])
+  Stone         Stone?       @relation(fields: [stoneId], references: [id])
+
+  @@index([blogId], map: "UploadedFile_blogId_fkey")
+  @@index([circlestoneId], map: "UploadedFile_circlestoneId_fkey")
+  @@index([profileId], map: "UploadedFile_profileId_fkey")
+  @@index([serviceTitle], map: "UploadedFile_serviceTitle_fkey")
+  @@index([sliderId], map: "UploadedFile_sliderId_fkey")
+  @@index([stoneId], map: "UploadedFile_stoneId_fkey")
 }
 
 model User {
@@ -92,10 +126,15 @@ model User {
   password String
 }
 
+model Youtube {
+  id	Int @id @default(autoincrement())
+  url 	String
+}
+
+
 
 model Category {
-  id       Int    @id @default(autoincrement())
-  title String @unique
+  id    Int     @id @default(autoincrement())
+  title String  @unique
   stone Stone[]
-  
 }

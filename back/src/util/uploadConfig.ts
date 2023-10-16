@@ -47,3 +47,24 @@ export const multerOptions = {
     },
   }),
 };
+
+
+export const multerOptionsText = {
+  fileFilter: (req: any, file: any, callback: any) => {
+    console.log(file.mimetype.match(/\/(txt|docx)$/));
+
+    callback(null, true)
+  },
+
+  storage: diskStorage({
+    destination: async (req, file, callback) => {
+      callback(null, await getDirPath('seoText/' + getDatePath(new Date())));
+    },
+    filename: (req, file, callback) => {
+      callback(
+        null,
+        new Date().toISOString().replace(/:/g, '-') + '-' + uuidRandom(file),
+      );
+    },
+  }),
+};
