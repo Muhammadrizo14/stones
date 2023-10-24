@@ -89,9 +89,9 @@ const ProductPage = () => {
 
 
   useEffect(() => {
-    if (popup === true) {
+    if (popup) {
       document.body.style.overflow = 'hidden'
-    } else if (popup === false) {
+    } else if (!popup) {
       document.body.style.overflow = 'auto'
     }
   }, [popup])

@@ -5,9 +5,9 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class BlogService {
-  constructor(private prismaService: PrismaService){}
+  constructor(private prismaService: PrismaService) {}
   create(createBlogDto: CreateBlogDto) {
-    return this.prismaService.blog.create({data: createBlogDto});
+    return this.prismaService.blog.create({ data: createBlogDto });
   }
 
   findAll() {
@@ -17,14 +17,20 @@ export class BlogService {
   }
 
   findOne(id: number) {
-    return this.prismaService.blog.findUnique({where: {id}, include: { uploadedFile: true },});
+    return this.prismaService.blog.findUnique({
+      where: { id },
+      include: { uploadedFile: true },
+    });
   }
 
   update(id: number, updateBlogDto: UpdateBlogDto) {
-    return this.prismaService.blog.update({where: {id}, data: updateBlogDto})
+    return this.prismaService.blog.update({
+      where: { id },
+      data: updateBlogDto,
+    });
   }
 
   remove(id: number) {
-    return this.prismaService.blog.delete({where: {id}})
+    return this.prismaService.blog.delete({ where: { id } });
   }
 }
