@@ -10,10 +10,14 @@ export class UploadEntity {
   size: number;
   createdAt: Date;
   updatedAt: Date;
+
+
+  // relations
   serviceTitle: string;
   circleStoneId: number;
   stoneId: number;
-  blogId:number;
+  blogId: number;
   profileId: number;
+  partnerId: number;
   sliderId: number;
 }

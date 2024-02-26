@@ -12,7 +12,10 @@ export class ProfileService {
 
   findAll() {
     return this.prismaService.profile.findMany({
-      include: { uploadedFile: true },
+      orderBy: {
+        id: 'desc'
+      },
+      include: { uploadedFile: true }
     });
   }
 

@@ -13,7 +13,8 @@ import { AppController } from './app.controller';
 import { ProfileModule } from './profile/profile.module';
 import { SliderModule } from './slider/slider.module';
 import { YoutubeModule } from './youtube/youtube.module';
-
+import { PartnersModule } from './partners/partners.module';
+import { CacheModule } from '@nestjs/cache-manager'; 
 @Module({
   imports: [
     PrismaModule,
@@ -30,6 +31,7 @@ import { YoutubeModule } from './youtube/youtube.module';
     ProfileModule,
     SliderModule,
     YoutubeModule,
+    PartnersModule,
   ],
   controllers: [AppController],
   providers: [],

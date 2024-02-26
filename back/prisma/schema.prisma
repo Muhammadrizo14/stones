@@ -2,6 +2,7 @@ generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
@@ -86,31 +87,41 @@ model Circlestone {
   uploadedFile UploadedFile[]
 }
 
+model Partners {
+  id           Int            @id @default(autoincrement())
+  uploadedFile UploadedFile[]
+}
+
 model UploadedFile {
-  id            Int          @id @default(autoincrement())
-  fieldname     String
-  originalname  String
-  encoding      String
-  mimetype      String
-  destination   String
-  filename      String       @unique
-  path          String
-  size          Int
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  deletedAt     DateTime?
+  id           Int       @id @default(autoincrement())
+  fieldname    String
+  originalname String
+  encoding     String
+  mimetype     String
+  destination  String
+  filename     String    @unique
+  path         String
+  size         Int
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  // relations
   serviceTitle  String?
   circlestoneId Int?
   stoneId       Int?
   blogId        Int?
   profileId     Int?
+  partnerId     Int?
   sliderId      Int?
+  // -------
   Blog          Blog?        @relation(fields: [blogId], references: [id])
   circlestone   Circlestone? @relation(fields: [circlestoneId], references: [id])
   Profile       Profile?     @relation(fields: [profileId], references: [id])
   services      Services?    @relation(fields: [serviceTitle], references: [title], onDelete: Cascade)
   Slider        Slider?      @relation(fields: [sliderId], references: [id])
   Stone         Stone?       @relation(fields: [stoneId], references: [id])
+  Partners      Partners?    @relation(fields: [partnerId], references: [id])
 
   @@index([blogId], map: "UploadedFile_blogId_fkey")
   @@index([circlestoneId], map: "UploadedFile_circlestoneId_fkey")
@@ -127,11 +138,9 @@ model User {
 }
 
 model Youtube {
-  id	Int @id @default(autoincrement())
-  url 	String
+  id  Int    @id @default(autoincrement())
+  url String
 }
-
-
 
 model Category {
   id    Int     @id @default(autoincrement())

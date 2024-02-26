@@ -9,17 +9,17 @@ async function bootstrap() {
 
 
   const httpsOptions = {
-key: fs.readFileSync('/etc/nginx/ssl/key.pem'),
-  cert: fs.readFileSync('/etc/nginx/ssl/cert.pem')
-};
+    key: fs.readFileSync('/var/www/httpd-cert/vkamne.com_2023-09-21-08-03_41.key'),
+    cert: fs.readFileSync('/var/www/httpd-cert/vkamne.com_2023-09-21-08-03_41.crt')
+  };
 
   const app = await NestFactory.create(AppModule, {
-  httpsOptions,
-})
- 
+    httpsOptions,
+  })
+
 
   app.enableCors();
   await app.listen(port);
-  console.log(`Server running on http://1627061-ci09322.twc1.net:${port}/`);
+  console.log(`Server running on https://vkamne.com:${port}/`);
 }
 bootstrap();

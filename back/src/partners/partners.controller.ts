@@ -1,0 +1,38 @@
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { PartnersService } from './partners.service';
+import { CreatePartnerDto } from './dto/create-partner.dto';
+import { UpdatePartnerDto } from './dto/update-partner.dto';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+
+@Controller('partners')
+export class PartnersController {
+  constructor(private readonly partnersService: PartnersService) { }
+
+  @Post()
+  @UseGuards(JwtAuthGuard)
+  create(@Body() createPartnerDto: CreatePartnerDto) {
+    return this.partnersService.create(createPartnerDto);
+  }
+
+  @Get()
+  findAll() {
+    return this.partnersService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.partnersService.findOne(+id);
+  }
+
+  @Patch(':id')
+  @UseGuards(JwtAuthGuard)
+  update(@Param('id') id: string, @Body() updatePartnerDto: UpdatePartnerDto) {
+    return this.partnersService.update(+id, updatePartnerDto);
+  }
+
+  @Delete(':id')
+  @UseGuards(JwtAuthGuard)
+  remove(@Param('id') id: string) {
+    return this.partnersService.remove(+id);
+  }
+}
