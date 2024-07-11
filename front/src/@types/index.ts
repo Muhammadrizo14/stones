@@ -10,10 +10,10 @@ export type PortfolioT = {
   title: string,
   info: string,
   link: string,
-  uploadedFile: {id: number}[]
+  uploadedFile: { id: number }[]
 }
 
-export type BlogT = {
+export interface BlogT {
   title: string,
   uploadedFile: { id: string }[],
   id: number,
@@ -39,5 +39,25 @@ export type ServiceT = {
   info: string,
   interorekster: string,
   serviceTitle: string,
-  uploadedFile: {id: number}[]
+  uploadedFile: { id: number }[]
+}
+
+
+export interface uploadedFile {
+  id: number,
+  fieldname: string,
+  originalname: string,
+  encoding: string,
+  mimetype: string,
+  destination: string,
+  filename: string,
+  nameMini: string,
+  path: string,
+  size: number,
+  createdAt: string,
+  updatedAt: string,
+  deletedAt: null,
+  servicesId: number | null,
+  teamId: number | null,
+  blogId: number | null,
 }

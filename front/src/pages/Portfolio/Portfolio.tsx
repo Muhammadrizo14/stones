@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {PortfolioT} from "../../@types";
+import React, { useEffect, useState } from 'react';
+import { PortfolioT } from "../../@types";
 import axios from "axios";
-import {HOST_URL} from "../../assets/consts";
+import { HOST_URL } from "../../assets/consts";
 import DynamicPage from "../../assets/dynamicPage";
 import Header from "../../layouts/Header/Header";
 import Loading from "../../components/Loading/Loading";
@@ -32,16 +32,16 @@ const Portfolio = () => {
   return (
     <div>
 
-      <DynamicPage title={'Услуги'}/>
-      <Header/>
-      {loading && <Loading/>}
-      {error && <Error/>}
+      <DynamicPage title={'Услуги'} />
+      <Header />
+      {loading && <Loading />}
+      {error && <Error />}
       {!error && !loading ?
         portfolios.length ?
           <ProjectsPortfolio projects={portfolios}>
             <h1 className="title">Портфолио</h1>
             <Link to={`/services`}><button className='btn grey-outline'>Вернуться в услуги</button></Link>
-          </ProjectsPortfolio> : <Empty/>
+          </ProjectsPortfolio> : <Empty />
         : null}
     </div>
   );

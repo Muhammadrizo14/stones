@@ -36,7 +36,7 @@ const Header = ({logo}: {logo?: string}) => {
       <div className="container">
         <div className="header">
           <Link to="/" className="logo">
-            <img src={logo === "white" ? 'https://vkamne.com/static/media/logo-white.svg' : 'https://vkamne.com/static/media/logo-grey.svg'} alt="logo"/>
+            <img src={logo === "white" ? logoWhite : logoGrey} alt="logo"/>
           </Link>
           <HeaderNav />
           <HeaderItems burger={burger} setBurger={setBurger} />

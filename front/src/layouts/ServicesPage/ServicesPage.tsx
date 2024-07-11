@@ -85,7 +85,7 @@ const ServicesPage = () => {
                       fill="#A19A9A" />
                   </svg>
                 </a>
-                <a href="https://wa.me/79213627629" target='_blank'>
+                <a href="https://wa.me/89650014371" target='_blank'>
                   <svg fill="#A19A9A" width="23" height="19" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
                     viewBox="0 0 308 308" xmlSpace="preserve">
                     <g id="XMLID_468_">

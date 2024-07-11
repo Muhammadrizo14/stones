@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import bottomStone from "../../assets/img/bottom-stone.png";
+import backgroundImage from "../../assets/img/main-bg2.png";
 
 
 import Header from "../../layouts/Header/Header";
@@ -19,9 +20,17 @@ import OurWorksVideos from "../../components/OurWorksVideos/OurWorksVideos";
 import DynamicPage from "../../assets/dynamicPage";
 import axios from "axios";
 import { HOST_URL } from "../../assets/consts";
+import { uploadedFile } from "../../@types";
+
+
+interface ISlide {
+  id: number;
+  uploadedFile: uploadedFile[]
+}
+
 
 const Main = () => {
-  const [slider, setSlider] = useState<any>([])
+  const [slider, setSlider] = useState<ISlide[]>([])
 
 
   useEffect(() => {
@@ -40,9 +49,13 @@ const Main = () => {
       <DynamicPage title='Продажа камня в санкт-Петербурге и лен области под ключ ' />
       <div className="main-bg">
         <Slider {...settings}>
-          {slider.map((slide: any) => (
-            <div className="main-slide">
-              <div style={{ backgroundImage: `url(${HOST_URL}upload/fayl/${slide.uploadedFile[0]?.id})` }}></div>
+          {slider?.map((slide: any) => (
+            <div className="main-slide" key={slide.id}>
+              {slide.uploadedFile[0]?.id ? (
+                <div style={{ backgroundImage: `url(${HOST_URL}upload/fayl/${slide.uploadedFile?.[0].id})` }}></div>
+              ) : (
+                <div style={{ backgroundImage: `url(${backgroundImage})` }}></div>
+              )}
             </div>
           ))}
         </Slider>

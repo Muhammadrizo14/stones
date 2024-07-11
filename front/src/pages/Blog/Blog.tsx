@@ -30,7 +30,6 @@ const Blog = () => {
         setLoading(false);
         setError(false);
         setBlogs(res.data);
-        console.log(res.data);
       })
       .catch(() => {
         setLoading(false);
@@ -49,21 +48,30 @@ const Blog = () => {
         {loading && <Loading />}
         {error && <Error />}
         {!error && !loading ?
-          blogs.length ? <div className="blogs-content">
-            {blogs.map((blog) =>
-              <div className="blog" key={blog.id}>
-                <Link to={`/blog/${blog.id}`}>
-                  <img src={`${HOST_URL}upload/fayl/${blog.uploadedFile[0].id}`} alt="" />
-                  <h2>{blog.title}</h2>
-                  <p className="date">{months[new Date(blog.createdAt).getMonth()]} {new Date(blog.createdAt).getDate()}, {new Date(blog.createdAt).getFullYear()} | <Link to="/blog">Блог</Link></p>
-                  <div className="more">
-                    <div className="line"></div>
-                    Подробнее
-                  </div>
-                </Link>
-              </div>
-            )}
-          </div> : <Empty />
+          blogs.length ? (
+            <div className="blogs-content">
+              {blogs.map((blog) => (
+                <div className="blog" key={blog.id}>
+                  <Link to={`/blog/${blog.id}`}>
+                    {blog.uploadedFile && blog.uploadedFile[0] && (
+                      <img src={`${HOST_URL}upload/fayl/${blog.uploadedFile[0].id}`} alt="" />
+                    )}  
+                    <h2>{blog.title}</h2>
+                    <p className="date">
+                      {months[new Date(blog.createdAt).getMonth()]} {new Date(blog.createdAt).getDate()}, {new Date(blog.createdAt).getFullYear()} |{' '}
+                      <Link to="/blog">Блог</Link>
+                    </p>
+                    <div className="more">
+                      <div className="line"></div>
+                      Подробнее
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <Empty />
+          )
           : null}
       </div>
     </div>

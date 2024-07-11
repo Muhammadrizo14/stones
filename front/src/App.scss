@@ -85,3 +85,47 @@
     height: 70px;
   }
 }
+.blog__wrap{
+  max-height: 700px;
+  height: 700px;
+}
+
+.portfolio__main__slider {
+  width: 86% !important;
+  height: 100% !important;
+  .product-slider {
+    height: 100%;
+  }
+  .product-slide  {
+    height: 100% !important;
+    div {
+      width: 100%;
+      height: 100% !important;
+      background-size: cover !important;
+    }
+  }
+  .slick-list {
+    height: 100% !important;
+    .slick-track {
+      height: 100% !important;
+      * {
+        height: 100% !important;
+      }
+    }
+  }
+}
+
+.portfolio__slider {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+.portfolio__minislider {
+  height: 100% !important;
+}
+
+.product-slider {
+  display: flex;
+  align-content: center;
+}
