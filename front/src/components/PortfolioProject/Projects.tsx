@@ -17,7 +17,7 @@ const ProjectsPortfolio: React.FC<ProjectsT> = ({ children, projects }) => {
         {children}
         <div className="projects-inner">
           {projects.map((project, i) => (
-            <div key={i} className="project" style={{ backgroundImage: `url(${HOST_URL}upload/fayl/${project.uploadedFile[0].id})`, paddingBottom: '64px' }}>
+            <div key={i} className="project" style={{ backgroundImage: `url(${HOST_URL}upload/fayl/${project.uploadedFile[0]?.id})`, paddingBottom: '64px' }}>
               {project.uploadedFile && project.uploadedFile[0] && (
                 <div>
                   <div className="project-bg"></div>
