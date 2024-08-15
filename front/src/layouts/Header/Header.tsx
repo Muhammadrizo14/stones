@@ -32,7 +32,7 @@ const Header = ({logo}: {logo?: string}) => {
   }, [burger]);
 
   return (
-    <header>
+    <header className='header'>
       <div className="container">
         <div className="header">
           <Link to="/" className="logo">
