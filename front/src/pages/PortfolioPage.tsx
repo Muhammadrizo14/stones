@@ -61,7 +61,7 @@ const PortfolioPage = () => {
                   <Slider
                     asNavFor={nav1}
                     ref={(slider2) => slider2 ? setNav2(slider2) : null}
-                    slidesToShow={6}
+                    slidesToShow={5}
                     focusOnSelect={true}
                     className='portfolio__minislider slides'
                     vertical={true}
