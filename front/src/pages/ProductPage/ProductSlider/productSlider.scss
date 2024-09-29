@@ -1,5 +1,6 @@
 .product-slider {
   width: 700px;
+  flex-direction: column;
 
   @media screen and (max-width: 1440px){
     width: 500px;
