@@ -9,8 +9,8 @@ async function bootstrap() {
 
 
   const httpsOptions = {
-    key: fs.readFileSync('/var/www/httpd-cert/vkamne.com_2023-09-21-08-03_41.key'),
-    cert: fs.readFileSync('/var/www/httpd-cert/vkamne.com_2023-09-21-08-03_41.crt')
+    key: fs.readFileSync('/var/www/httpd-cert/newcert/new.key'),
+    cert: fs.readFileSync('/var/www/httpd-cert/newcert/new.crt')
   };
 
   const app = await NestFactory.create(AppModule, {
